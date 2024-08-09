@@ -1,53 +1,50 @@
 <!DOCTYPE html>
+<html lang="en">
 
-<head>
-    <meta charset="utf-8" />
-    <title>App Help Desk</title>
-</head>
+    <head> 
+        <meta charset="utf-8" />
+        <title>Olper Motors</title>
+    </head>
 
-<body>
+<body> 
 
     <?php
 
-    /*iniciando a seção*/
+    
     session_start();
-    $_SESSION['X']='Sessão oficialmente aberta';
+    $_SESSION['X']='Seção oficialmente aberta';
     print_r($_SESSION['X']);
     echo '<hr>';
 
-        $usuario_authenticator=false; /*condição*/ 
+        $usuario_autenticator=false; 
 
-            $usuarios_app=array(
-                array(
-                    'email' => 'teste@gmail.com',
+            $usuarios_app= array(
+                array( 
+                    'email' => 'beker@gmail.com',
                     'senha' => '123456'
                 ),
-                
                 array(
-                    'email' => 'teste1@gmail.com',
+                    'email' => 'olp@gmail.com',
                     'senha' => '1234567'
                 )
-
             );
-
-    /*se caso o email ou a senha for 100% iguais aos salvos, você será autenticado, caso contrário o usuário não existe.*/
-    foreach ($usuarios_app as $user) {
-        if($user['email']==$_POST['email'] && $user['senha']==$_POST['senha']) {
-            $usuario_authenticator=true;
-        }
-    }
-
-    if($usuario_authenticator) {
-        echo "Usuário autenticado.";
-        $_SESSION['autenticado'] = 'SIM';
-    } else {
-        $_SESSION['autenticado'] = 'NAO';
-        header('Location: index.php?login=erro');
-    }
             
+            foreach ($usuarios_app as $user){ 
+                if($user['email']==$_POST['email'] && $user['senha']==$_POST['senha']) {
+                    $usuario_autenticator=true;
+                 }
+            } 
+
+            if($usuario_autenticator) {
+                echo "Usuario Autenticado";
+                $_SESSION['autenticado'] = 'SIM';
+            }
+            else{ 
+                $_SESSION['autenticado'] = 'NAO';
+                header('Location: login.php?login=erro');
+            }
+
     ?>
-
 </body>
-
-
+    
 </html>
